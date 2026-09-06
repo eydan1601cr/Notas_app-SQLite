@@ -16,12 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        binding.FEVAagregarNota.setOnClickListener {
-            startActivity(Intent(applicationContext, agregarnotaActivity::class.java))
-        }
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,5 +24,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.FEVAagregarNota.setOnClickListener {
+            startActivity(Intent(applicationContext, agregarnotaActivity::class.java))
+        }
     }
-}
+ }

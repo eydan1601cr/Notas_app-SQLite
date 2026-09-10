@@ -65,6 +65,6 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
         cursor.close()
         db.close()
         return listaNotas
-        
+
     }
 }

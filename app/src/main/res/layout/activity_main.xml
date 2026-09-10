@@ -24,12 +24,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notasRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/txtNotas"
         android:padding="15dp"
-        tools:listitem="@layout/item_nota"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        tools:listitem="@layout/item_nota" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/FEVAagregarNota"

@@ -30,22 +30,11 @@
 
     <TextView
         android:id="@+id/item_descripcion"
-        android:text="@string/item_descripcion"
-        android:maxLines="3"
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-
-
-
-
-
-
-
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:maxLines="3"
+        android:text="@string/item_descripcion" />
 
 
 </com.google.android.material.card.MaterialCardView>

@@ -10,7 +10,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
 ) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery =
-            "Create Table $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_DESCRIPTION TEXT"
+            "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_DESCRIPTION TEXT)"
         db?.execSQL(createTableQuery)
     }
 
@@ -37,7 +37,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
     fun insertNota(nota : Nota){
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_TITLE, nota.descripcion)
+            put(COLUMN_TITLE, nota.titulo)
             put(COLUMN_DESCRIPTION, nota.descripcion)
         }
 

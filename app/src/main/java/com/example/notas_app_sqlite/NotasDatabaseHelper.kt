@@ -28,7 +28,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
 
     companion object{
         private const val DATABASE_NAME = "notas.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 3
         private const val TABLE_NAME = "notas"
         private const val COLUMN_ID = "id"
         private const val COLUMN_TITLE = "titulo"
@@ -71,7 +71,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
 
     fun getIdNota(idNota: Int) : Nota{
         val db = readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME WHERR $COLUMN_ID = $idNota"
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = $idNota"
         val cursor = db.rawQuery(query,null)
         cursor.moveToFirst()
 
@@ -87,7 +87,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
     fun updateNota (nota: Nota){
         val db = writableDatabase
         val values = ContentValues().apply{
-            put(COLUMN_TITLE, nota.id)
+            put(COLUMN_TITLE, nota.titulo)
             put(COLUMN_DESCRIPTION, nota.descripcion)
         }
 

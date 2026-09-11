@@ -2,6 +2,7 @@ package com.example.notas_app_sqlite
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -27,7 +28,7 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
 
     companion object{
         private const val DATABASE_NAME = "notas.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 1
         private const val TABLE_NAME = "notas"
         private const val COLUMN_ID = "id"
         private const val COLUMN_TITLE = "titulo"
@@ -67,4 +68,20 @@ class NotasDatabaseHelper (context: Context) : SQLiteOpenHelper(
         return listaNotas
 
     }
+
+    fun getIdNota(idNota: Int) : Nota{
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERR $COLUMN_ID = $idNota"
+        val cursor = db.rawQuery(query,null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+        val titulo = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
+        val descripcion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPTION))
+
+        cursor.close()
+        db.close()
+        return Nota(id, titulo, descripcion)
+    }
+
 }

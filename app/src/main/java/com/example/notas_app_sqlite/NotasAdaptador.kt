@@ -1,10 +1,13 @@
 package com.example.notas_app_sqlite
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -21,6 +24,19 @@ class NotasAdaptador (
         val nota = notas[position]
         holder.itemTitulo.text = nota.titulo
         holder.itemDescripcion.text = nota.descripcion
+
+        holder.ivActualizar.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ActualizarNotaActivity::class.java).apply {
+                putExtra("id_nota", nota.id)
+            }
+
+            holder.itemView.context.startActivity(intent)
+            Toast.makeText(
+                holder.itemView.context,
+                "El id de la nota seleccionada es ${nota.id}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -30,6 +46,7 @@ class NotasAdaptador (
     class NotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val itemTitulo : TextView = itemView.findViewById(R.id.item_titulo)
         val itemDescripcion : TextView = itemView.findViewById(R.id.item_descripcion)
+        val ivActualizar : ImageView = itemView.findViewById(R.id.ivActualizar)
     }
 
     fun resfrescarLista (nuevaNota : List<Nota>){

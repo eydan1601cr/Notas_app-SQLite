@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         binding.notasRv.adapter = notasAdaptador
 
         binding.FEVAagregarNota.setOnClickListener {
-            startActivity(Intent(applicationContext, agregarnotaActivity::class.java))
+            startActivity(Intent(this, agregarnotaActivity::class.java))
         }
     }
 

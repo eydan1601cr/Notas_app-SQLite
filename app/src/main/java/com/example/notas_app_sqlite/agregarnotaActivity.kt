@@ -29,7 +29,7 @@ class agregarnotaActivity : AppCompatActivity() {
             if (!titulo.isEmpty() && !descripcion.isEmpty()){
                 guardarNota(titulo, descripcion)
             }else{
-                Toast.makeText(applicationContext, "LLENE LOS CAMPOS", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "LLENE LOS CAMPOS", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -44,9 +44,9 @@ class agregarnotaActivity : AppCompatActivity() {
     private fun guardarNota(titulo : String, descripcion : String){
         val nota = Nota(0, titulo, descripcion)
         db.insertNota(nota)
-        startActivity(Intent(applicationContext, MainActivity::class.java))
-        finishAffinity()
-        Toast.makeText(applicationContext, "Se ah agregado la nota", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+        Toast.makeText(this, "Se ha agregado la nota", Toast.LENGTH_SHORT).show()
 
     }
 
